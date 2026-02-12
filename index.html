@@ -1,306 +1,224 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Valentine Week Checklist 💘</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentine Week</title>
 
-  <style>
-    :root{
-      --bg1:#0b1020; --bg2:#1b0f1a;
-      --card: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.16);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --radius: 22px;
-      --accent: rgba(255,90,160,1);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(255,80,160,.22), transparent 60%),
-        radial-gradient(900px 600px at 90% 20%, rgba(120,80,255,.20), transparent 55%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      overflow-x:hidden;
-      display:grid;
-      place-items:center;
-      padding:24px;
-    }
+<style>
+:root{
+  --bg1:#0b1020;
+  --bg2:#1b0f1a;
+  --card: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.15);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.60);
+  --radius:18px;
+}
+*{box-sizing:border-box}
 
-    .card{
-      width:min(860px, 100%);
-      background: var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      padding:28px 22px;
-      position:relative;
-      overflow:hidden;
-    }
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:
+    radial-gradient(800px 500px at 20% 20%, rgba(255,80,160,.18), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(120,80,255,.16), transparent 55%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:20px;
+}
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:14px;
-    }
+.card{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:26px 20px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
 
-    h1{
-      margin:6px 0 10px;
-      font-size: clamp(26px, 4vw, 44px);
-      letter-spacing:-.02em;
-      line-height:1.1;
-      font-weight:900;
-    }
+h1{
+  margin:0 0 14px;
+  font-size:22px;
+  font-weight:800;
+}
 
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size: clamp(14px, 2vw, 16px);
-      line-height:1.6;
-      max-width: 70ch;
-    }
+.sub{
+  margin:0 0 16px;
+  font-size:13px;
+  color:var(--muted);
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-      margin-top:14px;
-    }
-    @media (min-width: 820px){
-      .grid{ grid-template-columns: 1fr 1fr; }
-    }
+.days{
+  display:grid;
+  gap:12px;
+  text-align:left;
+}
 
-    .item{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.12);
-      border-radius: 18px;
-      padding:14px 14px;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-    }
+label{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:15px;
+  cursor:pointer;
+}
 
-    input[type="checkbox"]{
-      width:20px; height:20px;
-      margin-top:3px;
-      accent-color: var(--accent);
-      cursor:pointer;
-    }
+input[type="checkbox"]{
+  width:18px;
+  height:18px;
+  accent-color:#ff5aa0;
+  cursor:pointer;
+}
 
-    .meta{
-      flex:1;
-      min-width:0;
-    }
-    .meta .top{
-      display:flex;
-      gap:10px;
-      align-items:baseline;
-      flex-wrap:wrap;
-    }
-    .date{
-      font-weight:900;
-      color: rgba(255,255,255,.92);
-    }
-    .day{
-      color: rgba(255,255,255,.78);
-      font-weight:800;
-    }
-    .task{
-      margin-top:6px;
-      color: rgba(255,255,255,.84);
-      line-height:1.5;
-      font-size: 15px;
-    }
-    .task small{
-      display:block;
-      margin-top:6px;
-      color: rgba(255,255,255,.60);
-      font-size: 12.5px;
-    }
+.kissGate{
+  margin-top:14px;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.12);
+  font-size:14px;
+  color:rgba(255,255,255,.85);
+}
 
-    .row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-    .btn{
-      border:0;
-      cursor:pointer;
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-weight:900;
-      font-size:14px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.28);
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .primary{
-      background: linear-gradient(135deg, rgba(255,90,160,1), rgba(255,70,120,1));
-      color:white;
-    }
-    .secondary{
-      background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.90);
-      box-shadow:none;
-    }
+.kissInput{
+  width:100%;
+  padding:11px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.08);
+  color:white;
+  text-align:center;
+  font-size:18px;
+  outline:none;
+  margin-top:10px;
+}
 
-    .footer{
-      margin-top:16px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-    }
+button{
+  margin-top:16px;
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff5aa0,#ff3d80);
+  color:white;
+}
 
-    .glow{
-      position:absolute; inset:-240px;
-      background:
-        radial-gradient(560px 360px at 18% 30%, rgba(255,80,160,.18), transparent 60%),
-        radial-gradient(520px 380px at 84% 42%, rgba(120,80,255,.14), transparent 60%);
-      z-index:-1;
-    }
-  </style>
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.small{
+  margin-top:12px;
+  font-size:11px;
+  color:var(--muted);
+}
+
+.loader{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,.18);
+  border-top-color:#ff5aa0;
+  animation: spin 1s linear infinite;
+  margin:18px auto 0;
+}
+@keyframes spin{ to{transform:rotate(360deg)} }
+
+.countdown{
+  margin-top:12px;
+  font-size:12px;
+  color:rgba(255,255,255,.72);
+}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <div class="glow"></div>
 
-    <div class="badge">✅ Valentine Week Checklist</div>
-    <h1>For Dr. Simran Sharma 💘</h1>
-    <p class="sub">
-      A tiny checklist of cute prompts from your boyfriend 😌<br>
-      Tick them off as you go. (Works on laptop/tab best.)
-    </p>
+<!-- CHECKLIST -->
+<div class="card" id="checklistCard">
+  <h1>Valentine Week</h1>
+  <p class="sub">Tick them all to continue 😌</p>
 
-    <div class="grid" id="list">
-      <!-- items injected by JS -->
-    </div>
-
-    <div class="row">
-      <button class="btn primary" id="saveBtn">Save progress</button>
-      <button class="btn secondary" id="resetBtn">Reset</button>
-    </div>
-
-    <div class="footer">Tip: Your progress saves in this browser (local storage).</div>
+  <div class="days" id="days">
+    <label><input type="checkbox">Rose Day</label>
+    <label><input type="checkbox">Propose Day</label>
+    <label><input type="checkbox">Chocolate Day</label>
+    <label><input type="checkbox">Teddy Day</label>
+    <label><input type="checkbox">Promise Day</label>
+    <label><input type="checkbox">Hug Day</label>
+    <label><input type="checkbox" id="kissCheck">Kiss Day</label>
   </div>
 
-  <script>
-    // 2026 Valentine week reference dates
-    // Rose 7, Propose 8, Chocolate 9, Teddy 10, Promise 11, Hug 12, Kiss 13, Valentine 14
-    const items = [
-      {
-        id:"rose",
-        date:"Feb 7",
-        day:"Rose Day 🌹",
-        text:"Pick your rose: 🌹🌷🌼 (and yes, you’re the whole bouquet)."
-      },
-      {
-        id:"propose",
-        date:"Feb 8",
-        day:"Propose Day 💍",
-        text:"‘Officially mine?’ 😌 (You can say yes again. I’ll pretend it’s the first time.)"
-      },
-      {
-        id:"choco",
-        date:"Feb 9",
-        day:"Chocolate Day 🍫",
-        text:"Chocolate is sweet… but you’re sweeter. So you win."
-      },
-      {
-        id:"teddy",
-        date:"Feb 10",
-        day:"Teddy Day 🧸",
-        text:"Send me a cute ‘teddy’ emoji so I can say: ‘same size only, just more obsessed’ 🤭"
-      },
-      {
-        id:"promise",
-        date:"Feb 11",
-        day:"Promise Day 🤝",
-        text:"One small promise: drink water, eat on time, and let me pamper you a little 😌🧿"
-      },
-      {
-        id:"hug",
-        date:"Feb 12",
-        day:"Hug Day 🤗",
-        text:"Virtual hug delivery: incoming 🤗 (No returns allowed.)"
-      },
-      {
-        id:"kiss",
-        date:"Feb 13",
-        day:"Kiss Day 😘",
-        text:"Prompt for tomorrow: ‘Send me a flying kiss’ 😘",
-        note:"If you want, I’ll send you a digital forehead kiss too 🫣"
-      },
-      {
-        id:"vday",
-        date:"Feb 14",
-        day:"Valentine’s Day ❤️",
-        text:"Valentine’s Day special: ‘Waitress, come back on the 14th — my Valentine is here’ 😌❤️",
-        note:"(Or we can keep it simple: ‘Happy Valentine’s Day, my Forever Valentine ♾️💘’)"
-      }
-    ];
+  <div class="kissGate">
+    To start Kiss Day, send me a flying kiss 😘
+    <input class="kissInput" id="kissInput" type="text" placeholder="Type here…" maxlength="2" />
+  </div>
 
-    const list = document.getElementById("list");
+  <button id="continueBtn" disabled>Continue</button>
+  <div class="small">Unlocks when all ticks are done + correct kiss.</div>
+</div>
 
-    function render(){
-      list.innerHTML = items.map(it => `
-        <div class="item">
-          <input type="checkbox" id="${it.id}">
-          <div class="meta">
-            <div class="top">
-              <div class="date">${it.date}</div>
-              <div class="day">${it.day}</div>
-            </div>
-            <div class="task">
-              ${it.text}
-              ${it.note ? `<small>${it.note}</small>` : ``}
-            </div>
-          </div>
-        </div>
-      `).join("");
+<!-- LOADING -->
+<div class="card" id="loadingCard" style="display:none;">
+  <h1>Just a moment…</h1>
+  <p class="sub">Preparing next page 😌</p>
+  <div class="loader"></div>
+  <div class="countdown" id="countdownText">Opening in 10s…</div>
+</div>
 
-      // load saved state
-      const saved = JSON.parse(localStorage.getItem("valWeekChecks") || "{}");
-      items.forEach(it=>{
-        const el = document.getElementById(it.id);
-        if(el) el.checked = !!saved[it.id];
-      });
+<script>
+const daysWrap = document.getElementById("days");
+const continueBtn = document.getElementById("continueBtn");
+const kissInput = document.getElementById("kissInput");
+const checklistCard = document.getElementById("checklistCard");
+const loadingCard = document.getElementById("loadingCard");
+const countdownText = document.getElementById("countdownText");
+
+function allBoxesChecked(){
+  const checks = daysWrap.querySelectorAll('input[type="checkbox"]');
+  return Array.from(checks).every(c => c.checked);
+}
+
+function kissOk(){
+  return kissInput.value.trim() === "😘";
+}
+
+function updateState(){
+  continueBtn.disabled = !(allBoxesChecked() && kissOk());
+}
+
+daysWrap.addEventListener("change", updateState);
+kissInput.addEventListener("input", updateState);
+
+continueBtn.addEventListener("click", ()=>{
+  checklistCard.style.display="none";
+  loadingCard.style.display="block";
+
+  let t = 10;
+  countdownText.textContent = `Opening in ${t}s…`;
+
+  const timer = setInterval(()=>{
+    t--;
+    if(t <= 0){
+      clearInterval(timer);
+      window.location.href = "./14th.html";
+      return;
     }
+    countdownText.textContent = `Opening in ${t}s…`;
+  },1000);
+});
+</script>
 
-    function save(){
-      const state = {};
-      items.forEach(it=>{
-        const el = document.getElementById(it.id);
-        state[it.id] = el ? el.checked : false;
-      });
-      localStorage.setItem("valWeekChecks", JSON.stringify(state));
-      alert("Saved 😌✅");
-    }
-
-    function resetAll(){
-      localStorage.removeItem("valWeekChecks");
-      render();
-    }
-
-    document.getElementById("saveBtn").addEventListener("click", save);
-    document.getElementById("resetBtn").addEventListener("click", resetAll);
-
-    render();
-  </script>
 </body>
 </html>
-
