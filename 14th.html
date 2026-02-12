@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentine’s Day 💘</title>
+
+<style>
+:root{
+  --bg1:#0b1020;
+  --bg2:#1b0f1a;
+  --card: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.15);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.65);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:
+    radial-gradient(800px 500px at 20% 20%, rgba(255,80,160,.18), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(120,80,255,.16), transparent 55%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:20px;
+  overflow:hidden;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px 22px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+
+h1{
+  margin:0 0 12px;
+  font-size:22px;
+  font-weight:900;
+}
+
+p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.countdown{
+  margin-top:16px;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.hidden{
+  display:none;
+}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-40px;
+  font-size:16px;
+  opacity:0;
+  animation: floatUp 3.8s linear forwards;
+  pointer-events:none;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(.9); opacity:0}
+  15%{opacity:.9}
+  100%{transform:translateY(-120vh) scale(1.3); opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCKED VIEW -->
+<div class="card" id="lockedView">
+  <div class="badge">🔒 Locked</div>
+  <h1>Not yet… 💘</h1>
+  <p>This unlocks on 14th February ♾️</p>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<!-- UNLOCKED VIEW -->
+<div class="card hidden" id="unlockedView">
+  <div class="badge">💘 Unlocked</div>
+  <h1>Happy Valentine’s Day, Dr. Simran Sharma ♾️💘</h1>
+  <p>
+    Thank you for being my forever Valentine.<br>
+    One day was never enough for you anyway 😌✨
+  </p>
+</div>
+
+<script>
+const now = new Date();
+const year = now.getFullYear();
+const unlockDate = new Date(year, 1, 14, 0, 0, 0); // Feb 14 midnight
+const countdownEl = document.getElementById("countdown");
+
+function updateCountdown(){
+  const current = new Date();
+  const diff = unlockDate - current;
+
+  if(diff <= 0){
+    document.getElementById("lockedView").classList.add("hidden");
+    document.getElementById("unlockedView").classList.remove("hidden");
+    startCelebration();
+    clearInterval(timer);
+    return;
+  }
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const minutes = Math.floor((diff / (1000*60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  countdownEl.textContent =
+    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+const timer = setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function startCelebration(){
+  const emojis = ["💘","💖","💗","💞","❤️","✨"];
+  setInterval(()=>{
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    h.style.left = Math.random()*100 + "vw";
+    h.style.fontSize = (14 + Math.random()*16) + "px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 5000);
+  }, 300);
+}
+</script>
+
+</body>
+</html>
